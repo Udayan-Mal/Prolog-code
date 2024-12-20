@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prolog Programs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #181818; /* Dark background */
+            color: #d3d3d3; /* Light text for better contrast */
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333; /* Darker header */
+            color: #fff;
+        }
+        .program-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .program-item {
+            padding: 12px;
+            background-color: #2b2b2b; /* Darker background for list items */
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .program-item:hover {
+            background-color: #444; /* Lighter background on hover */
+        }
+        .program-code {
+            display: none;
+            background-color: #1f1f1f; /* Dark background for code section */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            white-space: pre-wrap;
+            font-family: monospace;
+            color: #f0f0f0; /* Lighter text for code */
+        }
+        .back-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+        .back-btn:hover {
+            background-color: #45a049;
+        }
+        .program-title {
+            font-weight: bold;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .example {
+            background-color: #333;
+            color: #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Prolog Programming Challenges</h1>
+            <p>Click on a program to view the code</p>
+        </div>
+
+        <div id="program-list">
+            <ul class="program-list">
+                <!-- Program buttons will be populated here -->
+                <li class="program-item" onclick="showCode(1)">Power Function</li>
+                <li class="program-item" onclick="showCode(2)">Factorial</li>
+                <li class="program-item" onclick="showCode(3)">Countdown</li>
+                <li class="program-item" onclick="showCode(4)">Find Element</li>
+                <li class="program-item" onclick="showCode(5)">Find Length</li>
+                <li class="program-item" onclick="showCode(6)">Merge Lists</li>
+                <li class="program-item" onclick="showCode(7)">Delete Element</li>
+                <li class="program-item" onclick="showCode(8)">Even or Odd</li>
+                <li class="program-item" onclick="showCode(9)">Maximum of Two Numbers</li>
+                <li class="program-item" onclick="showCode(10)">Maximum of Three Numbers</li>
+                <li class="program-item" onclick="showCode(11)">Fibonacci Series</li>
+                <li class="program-item" onclick="showCode(12)">GCD</li>
+                <li class="program-item" onclick="showCode(13)">Tower of Hanoi</li>
+                <li class="program-item" onclick="showCode(14)">Sum Elements in List</li>
+                <li class="program-item" onclick="showCode(15)">Grandfather of Akbar</li>
+                <li class="program-item" onclick="showCode(16)">Sister of Ann</li>
+                <li class="program-item" onclick="showCode(17)">Brother of Rahul</li>
+                <li class="program-item" onclick="showCode(18)">Minimum of 3 Numbers</li>
+                <li class="program-item" onclick="showCode(19)">Family Tree</li>
+                <li class="program-item" onclick="showCode(20)">Permutation</li>
+                <li class="program-item" onclick="showCode(21)">Combination</li>
+                <li class="program-item" onclick="showCode(22)">LCM (Least Common Multiple)</li>
+                <li class="program-item" onclick="showCode(23)">Find a Route in a Graph</li>
+            </ul>
+        </div>
+
+        <div id="program-code" class="program-code">
+            <button class="back-btn" onclick="backToList()">Back to List</button>
+            <div id="question" class="question"></div>
+            <pre id="code"></pre>
+            <div id="example" class="example"></div>
+        </div>
+    </div>
+
+    <script>
+ const programs = [
+    {
+        title: "Power Function",
+        question: "Write a Prolog program to calculate X raised to the power Y.",
+        code: `power(X, Y, Result) :- 
+    Result is X ** Y.`,
+        example: `Example Input: ?- power(2, 3, Result).
+Example Output: Result = 8.`
+    },
+    {
+        title: "Factorial",
+        question: "Write a Prolog program to calculate N factorial (N!).",
+        code: `factorial(0, 1).
+factorial(N, Result) :- 
+    N > 0, 
+    N1 is N - 1, 
+    factorial(N1, R1), 
+    Result is N * R1.`,
+        example: `Example Input: ?- factorial(5, Result).
+Example Output: Result = 120.`
+    },
+    {
+        title: "Countdown",
+        question: "Write a Prolog program to display numbers from 10 to 1.",
+        code: `countdown(0).
+countdown(N) :- 
+    N > 0, 
+    write(N), nl,
+    N1 is N - 1, 
+    countdown(N1).`,
+        example: `Example Input: ?- countdown(10).
+Example Output: 10
+9
+8
+7
+6
+5
+4
+3
+2
+1`
+    },
+    {
+        title: "Find Element",
+        question: "Write a Prolog program to check if an element A exists in a list.",
+        code: `find_element(X, [X|_]).            % Element found at the head of the list
+find_element(X, [_|Tail]) :-       % Recursive check in the tail
+    find_element(X, Tail).`,
+        example: `Example Input: ?- find_element(3, [1, 2, 3, 4]).
+Example Output: true.`
+    },
+    {
+        title: "Find Length",
+        question: "Write a Prolog program to calculate the length of a list.",
+        code: `find_length([], 0).                     % Base case: empty list has length 0
+find_length([_|Tail], N) :-             
+    find_length(Tail, N1),              % Recursive call
+    N is N1 + 1.                       % Increment length by 1`,
+        example: `Example Input: ?- find_length([1, 2, 3], Length).
+Example Output: Length = 3.`
+    },
+    {
+        title: "Merge Lists",
+        question: "Write a Prolog program to merge two lists.",
+        code: `list_merge([], L, L).                    % If the first list is empty, result is the second list
+list_merge([X|T1], L2, [X|T3]) :-        
+    list_merge(T1, L2, T3).              % Recursive call to merge the tail of the first list`,
+        example: `Example Input: ?- list_merge([1, 2], [3, 4], Result).
+Example Output: Result = [1, 2, 3, 4].`
+    },
+    {
+        title: "Delete Element",
+        question: "Write a Prolog program to delete an element from a list.",
+        code: `del_element(_, [], []).                 % Base case: empty list returns empty list
+del_element(X, [X|T], T1) :-            % If the head matches the element, skip it
+    del_element(X, T, T1).             
+del_element(X, [Y|T], [Y|T1]) :-        % Keep the head and recurse if no match
+    X \= Y, 
+    del_element(X, T, T1).`,
+        example: `Example Input: ?- del_element(3, [1, 2, 3, 4], Result).
+Example Output: Result = [1, 2, 4].`
+    },
+    {
+        title: "Even or Odd",
+        question: "Write a query to display whether a number is even or odd.",
+        code: `evenodd(X) :- 
+    R is X mod 2,
+    (R =:= 0 -> write('Even'); write('Odd')).`,
+        example: `Example Input: ?- evenodd(5).
+Example Output: Odd.`
+    },
+    {
+        title: "Maximum of Two Numbers",
+        question: "Write a query to display the maximum of two numbers.",
+        code: `max(X, Y) :-
+    (X > Y -> write(X), write(' is the maximum number');
+     X < Y -> write(Y), write(' is the maximum number');
+     write('Both are equal')).`,
+        example: `Example Input: ?- max(3, 5).
+Example Output: 5 is the maximum number.`
+    },
+    {
+        title: "Maximum of Three Numbers",
+        question: "Write a query to display the maximum of three numbers.",
+        code: `max(X, Y, Z) :-
+    (X >= Y, X >= Z -> write(X), write(' is the maximum number');
+     Y >= X, Y >= Z -> write(Y), write(' is the maximum number');
+     Z >= X, Z >= Y -> write(Z), write(' is the maximum number')).`,
+        example: `Example Input: ?- max(5, 2, 8).
+Example Output: 8 is the maximum number.`
+    },
+    {
+        title: "Fibonacci Series",
+        question: "Write a query to display the Fibonacci series up to N terms.",
+        code: `fib(0, 0).
+fib(1, 1).
+fib(N, F) :-
+    N > 1,
+    N1 is N - 1,
+    N2 is N - 2,
+    fib(N1, F1),
+    fib(N2, F2),
+    F is F1 + F2.
+
+fibonacci_series(N) :-
+    between(0, N, I),
+    fib(I, F),
+    write(F), write(' '),
+    fail.
+fibonacci_series(_).`,
+        example: `Example Input: ?- fibonacci_series(5).
+Example Output: 0 1 1 2 3 5.`
+    },
+    {
+        title: "GCD",
+        question: "Write a Prolog program to find the GCD of two numbers.",
+        code: `gcd(A, 0, A) :- A > 0.
+gcd(A, B, GCD) :- 
+    B > 0, 
+    R is A mod B, 
+    gcd(B, R, GCD).`,
+        example: `Example Input: ?- gcd(56, 98, GCD).
+Example Output: GCD = 14.`
+    },
+    {
+        title: "Tower of Hanoi",
+        question: "Write a Prolog program for the Tower of Hanoi problem.",
+        code: `move(1, A, B, _) :- 
+    write('Move disk from '), write(A), write(' to '), write(B), nl.
+move(N, A, B, C) :- 
+    N > 1, 
+    N1 is N - 1, 
+    move(N1, A, C, B), 
+    move(1, A, B, _), 
+    move(N1, C, B, A).`,
+        example: `Example Input: ?- move(3, a, b, c).
+Example Output: Move disk from a to b
+Move disk from a to c
+Move disk from b to c
+Move disk from a to b
+Move disk from c to a
+Move disk from c to b
+Move disk from a to b.`
+    },
+    {
+        title: "Sum Elements in List",
+        question: "Write a Prolog program to sum all elements in a list.",
+        code: `sum([], 0).                          % Base case: sum of an empty list is 0
+sum([Head|Tail], Sum) :- 
+    sum(Tail, TailSum), 
+    Sum is Head + TailSum.`,
+        example: `Example Input: ?- sum([1, 2, 3, 4], Sum).
+Example Output: Sum = 10.`
+    },
+    {
+        title: "Grandfather of Akbar",
+        question: "Write a query to display who is the grandfather of Akbar.",
+        code: `father(akbar, ahmed).
+father(ahmed, salim).
+father(salim, babar).
+
+grandfather(X, Y) :- father(X, Z), father(Z, Y).`,
+        example: `Example Input: ?- grandfather(X, akbar).
+Example Output: X = salim.`
+    },
+    {
+        title: "Sister of Ann",
+        question: "Write a query to display the sister's name of Ann who is the grandmother of Pat.",
+        code: `mother(ann, sara).
+mother(ann, rebecca).
+mother(sara, pat).
+
+sister_of_ann(X) :- 
+    mother(ann, X), 
+    X \= sara, 
+    X \= rebecca.`,
+        example: `Example Input: ?- sister_of_ann(X).
+Example Output: X = sara.`
+    },
+    {
+        title: "Brother of Rahul",
+        question: "Write a query to display the brother of Rahul.",
+        code: `father(rahul, amit).
+father(rahul, ravi).
+father(amit, rahul).
+father(ravi, rahul).
+
+brother_of_rahul(X) :- 
+    father(rahul, X), 
+    X \= rahul.`,
+        example: `Example Input: ?- brother_of_rahul(X).
+Example Output: X = amit ; X = ravi.`
+    },
+    {
+        title: "Minimum of 3 Numbers",
+        question: "Write a query to find the minimum of three numbers.",
+        code: `min_of_three(X, Y, Z, Min) :- 
+    (X =< Y, X =< Z -> Min = X; 
+    Y =< X, Y =< Z -> Min = Y; 
+    Min = Z).`,
+        example: `Example Input: ?- min_of_three(5, 3, 8, Min).
+Example Output: Min = 3.`
+    },
+    {
+        title: "Family Tree",
+        question: "Write a query to display a family tree.",
+        code: `parent(john, mary).
+parent(mary, susan).
+parent(susan, adam).
+
+family_tree(X) :- parent(X, Y), write(Y), nl, family_tree(Y).`,
+        example: `Example Input: ?- family_tree(john).
+Example Output: mary
+susan
+adam.`
+    },
+    {
+        title: "Permutation",
+        question: "Write a Prolog program to generate all permutations of a list.",
+        code: `perm([], []).
+perm([H|T], P) :-
+    perm(T, Pt),
+    select(H, P, Pt).`,
+        example: `Example Input: ?- perm([1, 2, 3], P).
+Example Output: P = [1, 2, 3] ;
+P = [1, 3, 2] ;
+P = [2, 1, 3] ;
+P = [2, 3, 1] ;
+P = [3, 1, 2] ;
+P = [3, 2, 1].`
+    },
+    {
+        title: "Combination",
+        question: "Write a Prolog program to generate combinations of a list.",
+        code: `combination(0, _, []).
+combination(N, [H|T], [H|Comb]) :- 
+    N > 0, 
+    N1 is N - 1, 
+    combination(N1, T, Comb).
+combination(N, [_|T], Comb) :- 
+    N > 0, 
+    combination(N, T, Comb).`,
+        example: `Example Input: ?- combination(2, [1, 2, 3], C).
+Example Output: C = [1, 2] ; C = [1, 3] ; C = [2, 3].`
+    },
+    {
+        title: "LCM (Least Common Multiple)",
+        question: "Write a Prolog program to find the Least Common Multiple (LCM) of two numbers.",
+        code: `lcm(X, Y, LCM) :-
+    gcd(X, Y, GCD),
+    LCM is abs(X * Y) // GCD.`,
+        example: `Example Input: ?- lcm(12, 15, LCM).
+Example Output: LCM = 60.`
+    },
+    {
+        title: "Program to Find a Route in a Graph",
+        question: "Write a Prolog program to find a route in a graph.",
+        code: `% Define the edges of the graph
+edge(a, b).
+edge(b, c).
+edge(c, d).
+edge(d, f).
+edge(c, e).
+edge(e, g).
+edge(g, f).
+
+% Rule to detect a route from X to Y
+route(X, Y) :- 
+    write(X), 
+    X = Y.  % Base case: If X equals Y, stop.
+
+route(X, Y) :- 
+    edge(X, Z),  % Find an edge from X to Z
+    write(' → '), 
+    route(Z, Y). % Recursively find the path from Z to Y`,
+        example: `Example Input: ?- route(a, f).
+Example Output: a → b → c → f.`
+    }
+];
+
+
+        function showCode(index) {
+            const program = programs[index - 1];
+            document.getElementById('program-list').style.display = 'none';
+            document.getElementById('program-code').style.display = 'block';
+            document.getElementById('question').textContent = program.question;
+            document.getElementById('code').textContent = program.code;
+            document.getElementById('example').textContent = program.example;
+        }
+
+        function backToList() {
+            document.getElementById('program-list').style.display = 'block';
+            document.getElementById('program-code').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
